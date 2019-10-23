@@ -1,0 +1,536 @@
+html
+{
+    scroll-behavior: smooth;
+}
+
+body
+{
+    margin: 0;
+    padding: 0px;
+    background: #640a1a;
+
+}
+:root 
+{
+    --primary-color: #6d071a;
+    --overlay-color: rgba(78, 22, 9, 0.85);
+    --menu-speed: 0.75s;
+}
+  
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*menu wrap*/
+.menu-wrap
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+  
+.menu-wrap .toggler 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+}
+  
+.menu-wrap .hamburger
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+/* Lignes hamburger */
+.menu-wrap .hamburger > div 
+{
+    position: relative;
+    flex: none;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+  
+/* lignes top et bottom */
+.menu-wrap .hamburger > div::before,
+.menu-wrap .hamburger > div::after 
+{
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    width: 100%;
+    height: 2.5px;
+    background: inherit;
+}
+  
+.menu-wrap .hamburger > div::after 
+{
+    top: 10px;
+}
+  
+/*Animation */
+.menu-wrap .toggler:checked + .hamburger > div
+{
+    transform: rotate(135deg);
+}
+  
+/* X */
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after
+{
+    top: 0;
+    transform: rotate(90deg);
+}
+  
+/* Rotate On Hover When Checked */
+.menu-wrap .toggler:checked:hover + .hamburger > div 
+{
+    transform: rotate(225deg);
+}
+    
+/* Menu Visible */
+
+.menu-wrap .toggler:checked ~ .menu 
+{
+    visibility: visible;
+}
+  
+.menu-wrap .toggler:checked ~ .menu > div 
+{
+    transform: scale(1);
+    transition-duration: var(--menu-speed);
+}
+  
+.menu-wrap .toggler:checked ~ .menu > div > div 
+{
+    opacity: 1;
+    transition:  opacity 0.4s ease 0.4s;
+}
+  
+.menu-wrap .menu 
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.menu-wrap .menu > div 
+{
+    background: var(--overlay-color);
+    border-radius: 50%;
+    width: 200vw;
+    height: 200vw;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+}
+  
+.menu-wrap .menu > div > div 
+{
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+  
+.menu-wrap .menu > div > div > ul > li 
+{
+    list-style: none;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+  
+  .menu-wrap .menu > div > div > ul > li > a 
+{
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+.menu-wrap .menu > div > div > ul > li > a:hover
+{
+    color: crimson;
+}
+/*header*/
+
+header
+{
+    background: #6d071a;
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+header .block_h
+{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-right: 30px;
+    margin-top: 10px;
+    
+}
+
+header .block_h a
+{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin-top: 5px;
+    justify-content: end;
+}
+
+header .block_h a:hover
+{
+    color: crimson;
+}
+
+header #logo_h
+{
+    width: 40%;
+    display: flex;
+    justify-content:center;
+}
+
+header #logo_h img
+{
+    margin-top: -20px;
+    width: 250px;
+    height: 250px;
+}
+/*nav*/
+
+nav
+{
+    width: 100%;
+    height: 80px;
+    background: #6d071a;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+nav a
+{
+    width: 30%;
+    background:#6d071a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover
+{
+    background: #640a1a;
+    color: crimson;
+}
+nav 
+{
+    width: 100%;
+}
+
+nav #search_content
+{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav #search_content img 
+{
+    width: 25px;
+    height: 25px;
+}
+nav #search_content input[type="text"]
+{
+    width: 70%;
+    height: 25px;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    background: crimson;
+}
+
+/*Footer*/
+
+footer
+{
+    width: 100%;
+    height: 250px;
+    background: #6d071a;
+    display: flex;
+    flex-direction: row;
+}
+
+footer .block_f
+{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+footer .block_f a
+{
+    text-decoration: none;
+    color: white;
+}
+
+footer .block_f a:hover
+{
+    color: crimson;
+}
+footer .block_f2
+{
+    width: 33%;
+    height: 20px; 
+}
+footer .block_f2 #logo_f
+{
+    height: 125px;
+    display: flex;
+    justify-content:center;
+}
+
+footer .block_f2 #logo_f img
+{
+    width: 200px;
+    height: 200px;
+}
+footer .block_f2 #rs_f
+{
+    height: 125px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+footer .block_f2 #rs_f img
+{
+    width: 50px;
+    height: 50px;
+}
+
+footer .block_f h1,
+footer .block_f h2
+{
+    font-weight: 500;
+    font-size: 35px;
+    letter-spacing: 2px;
+}
+
+footer .block_f h1
+{
+    color: crimson;
+}
+footer .block_f ul li
+{
+    margin-left: 55px;
+    margin-top: 10px;
+}
+
+/*Main carte*/
+
+#menu_c .blockcard 
+{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+#menu_c
+{
+    height: 400px;
+    display: flex;
+    margin: 60px 0;
+}
+#menu_c .card
+{
+    position:absolute;
+    width: 300px;
+    height: 400px;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    transition: 0.5s;
+}
+
+#menu_c .card .front img
+{
+    height: 100%;
+    width: 100%;
+}
+
+#menu_c .card .front
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    backface-visibility: hidden;
+    transform: rotateX(0deg);
+    transition: 0.5s;
+}
+
+#menu_c .card:hover .front
+{
+    transform: rotateX(-180deg);
+}
+
+#menu_c .card .back
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    backface-visibility: hidden;
+    transform: rotateX(180deg);
+    transition: 0.5s;
+}
+
+#menu_c .card .back::before
+{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:#6d071a;
+}
+
+#menu_c .card:hover .back
+{
+    transform: rotateX(0deg);
+}
+
+#menu_c .card .back .details
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#menu_c .card .details
+{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#menu_c .card .details h2
+{
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+}
+
+#menu_c .card .details h2 span
+{
+    color:#a7a7a7;
+    font-size: 16px;
+}
+
+#menu_c .card .details button
+{
+    color: white;
+    background: transparent;
+    border-color: crimson;
+    border-radius: 20px;
+    padding: 10px;
+}
+#menu_c .social-icons 
+{
+    padding: 10px 0;
+}
+
+#menu_c .social-icons a
+{
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    background: #262626;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+#menu_c .social-icons a .fa
+{
+    line-height: 36px;
+}
+
+#menu_c .social-icons a:hover 
+{
+    background: #6d071a;
+}
+
+/*Musique*/
+
+.bloctitre
+{
+    width: 100%;
+    height: 100px;
+    color: white;
+}
+
+.bloctitre .titre
+{
+    margin-left: 3.96%;
+    width: 90%;
+    height: 50px;
+    border-bottom: 1px solid crimson;
+}
