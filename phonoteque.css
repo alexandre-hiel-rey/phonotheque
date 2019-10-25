@@ -1,0 +1,949 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap');
+html
+{
+    scroll-behavior: smooth;
+}
+
+body
+{
+    margin: 0;
+    padding: 0px;
+    background: #640a1a;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+:root 
+{
+    --primary-color: rgba(109, 7, 26, 0.75);
+    --overlay-color: rgba(78, 22, 9, 0.85);
+    --menu-speed: 0.75s;
+}
+  
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+hr
+{
+    color: crimson;
+}
+/*menu wrap*/
+.menu-wrap
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+  
+.menu-wrap .toggler 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+}
+  
+.menu-wrap .hamburger
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+/* Lignes hamburger */
+.menu-wrap .hamburger > div 
+{
+    position: relative;
+    flex: none;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+  
+/* lignes top et bottom */
+.menu-wrap .hamburger > div::before,
+.menu-wrap .hamburger > div::after 
+{
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    width: 100%;
+    height: 2.5px;
+    background: inherit;
+}
+  
+.menu-wrap .hamburger > div::after 
+{
+    top: 10px;
+}
+  
+/*Animation */
+.menu-wrap .toggler:checked + .hamburger > div
+{
+    transform: rotate(135deg);
+}
+  
+/* X */
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after
+{
+    top: 0;
+    transform: rotate(90deg);
+}
+  
+/* Rotate On Hover When Checked */
+.menu-wrap .toggler:checked:hover + .hamburger > div 
+{
+    transform: rotate(225deg);
+}
+    
+/* Menu Visible */
+
+.menu-wrap .toggler:checked ~ .menu 
+{
+    visibility: visible;
+}
+  
+.menu-wrap .toggler:checked ~ .menu > div 
+{
+    transform: scale(1);
+    transition-duration: var(--menu-speed);
+}
+  
+.menu-wrap .toggler:checked ~ .menu > div > div 
+{
+    opacity: 1;
+    transition:  opacity 0.4s ease 0.4s;
+}
+  
+.menu-wrap .menu 
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.menu-wrap .menu > div 
+{
+    background: var(--overlay-color);
+    border-radius: 50%;
+    width: 200vw;
+    height: 200vw;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+}
+  
+.menu-wrap .menu > div > div 
+{
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+  
+.menu-wrap .menu > div > div > ul > li 
+{
+    list-style: none;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+  
+  .menu-wrap .menu > div > div > ul > li > a 
+{
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+.menu-wrap .menu > div > div > ul > li > a:hover
+{
+    color: crimson;
+}
+/*header*/
+
+header
+{
+    background: #6d071a;
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.block_h
+{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 30px;
+    margin-top: 10px;
+    
+}
+
+.block_h a
+{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.block_h a:hover
+{
+    color: crimson;
+}
+
+#logo_h
+{
+    width: 40%;
+    display: flex;
+    justify-content:center;
+}
+
+#logo_h img
+{
+    margin-top: -20px;
+    width: 250px;
+    height: 250px;
+}
+/*nav*/
+
+nav
+{
+    width: 100%;
+    height: 80px;
+    background: #6d071a;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+nav a
+{
+    width: 30%;
+    background:#6d071a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover
+{
+    background: #640a1a;
+    color: crimson;
+}
+nav 
+{
+    width: 100%;
+}
+
+nav #search_content
+{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav #search_content img 
+{
+    width: 25px;
+    height: 25px;
+}
+nav #search_content input[type="text"]
+{
+    width: 70%;
+    height: 25px;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    background: crimson;
+}
+
+/*Footer*/
+
+footer
+{
+    width: 100%;
+    height: 250px;
+    background: #6d071a;
+    display: flex;
+    flex-direction: row;
+}
+
+footer .block_f
+{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+footer .block_f a
+{
+    text-decoration: none;
+    color: white;
+}
+
+footer .block_f a:hover
+{
+    color: crimson;
+}
+footer .block_f2
+{
+    width: 33%;
+    height: 20px; 
+}
+footer .block_f2 #logo_f
+{
+    height: 125px;
+    display: flex;
+    justify-content:center;
+}
+
+footer .block_f2 #logo_f img
+{
+    width: 200px;
+    height: 200px;
+}
+footer .block_f2 #rs_f
+{
+    height: 125px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+footer .block_f2 #rs_f img
+{
+    width: 50px;
+    height: 50px;
+}
+
+footer .block_f h1,
+footer .block_f h2
+{
+    font-weight: 500;
+    font-size: 35px;
+    letter-spacing: 2px;
+}
+
+footer .block_f h1
+{
+    color: crimson;
+}
+footer .block_f ul li
+{
+    margin-left: 55px;
+    margin-top: 10px;
+}
+
+/*Main carte*/
+
+#menu_c .blockcard
+{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+#menu_c .blockcard2 
+{
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+#menu_c
+{
+    height: 400px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+#menu_c .card
+{
+    position:absolute;
+    width: 300px;
+    height: 400px;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    transition: 0.5s;
+}
+
+#menu_c .card .front img
+{
+    height: 100%;
+    width: 100%;
+}
+
+#menu_c .card .front
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    backface-visibility: hidden;
+    transform: rotateX(0deg);
+    transition: 0.5s;
+}
+
+#menu_c .card:hover .front
+{
+    transform: rotateX(-180deg);
+}
+
+#menu_c .card .back
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    backface-visibility: hidden;
+    transform: rotateX(180deg);
+    transition: 0.5s;
+}
+
+#menu_c .card .back::before
+{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:#6d071a;
+}
+
+#menu_c .card:hover .back
+{
+    transform: rotateX(0deg);
+}
+
+#menu_c .card .back .details
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#menu_c .card .details
+{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#menu_c .card .details h2
+{
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+}
+
+#menu_c .card .details h2 span
+{
+    color:#a7a7a7;
+    font-size: 16px;
+}
+
+#menu_c .card .details button
+{
+    color: white;
+    background: transparent;
+    border-color: crimson;
+    border-radius: 20px;
+    padding: 10px;
+}
+#menu_c .social-icons 
+{
+    padding: 10px 0;
+}
+
+#menu_c .social-icons a
+{
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    background: #262626;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+#menu_c .social-icons a img
+{
+    width: 36px;
+    height: 36px;
+}
+
+#menu_c .social-icons a:hover 
+{
+    background: #6d071a;
+}
+
+/*Musique*/
+
+.bloctitre
+{
+    width: 100%;
+    height: 70px;
+    color: white;
+    margin: 25px 0;
+
+}
+
+.bloctitre .titre
+{
+    margin-left: 3.96%;
+    width: 91%;
+    height: 50px;
+    border-bottom: 1px solid crimson;
+}
+
+#top_m2,
+#top_m
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+    padding: 0 5%;
+    color: white;
+}
+#rapcontainer 
+{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background: #6d071a ;
+}
+
+#rapcontainer #rapmusic1
+{
+    width: 30%;
+}
+
+#rapcontainer #musicrap1
+{
+    width: 70%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+#musicrap1 audio
+{
+    width: 100%;
+}
+
+#rapcontainer #rapmusic1 
+{
+    font-size: 30px;
+}
+
+#rapcontainer #rapmusic1 p span
+{
+    color:#a7a7a7;
+    font-size: 16px;
+}
+
+#rapcontainer #rapmusic1 p span a
+{
+    color:#a7a7a7;
+    text-decoration: none;
+}
+
+/*Page Artistes*/
+
+#artiste4,
+#artiste3,
+#artiste2,
+#artiste
+{
+    background: var(--primary-color);
+    color: #fff;
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+#artiste4:before
+{
+    content: '';
+    background-image: url(images/dolls.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+#artiste3:before
+{
+    content: '';
+    background-image: url(images/ts.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+#artiste2:before
+{
+    content: '';
+    background-image: url(images/es.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+#artiste:before
+{
+    content: '';
+    background-image: url(images/djs.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#artiste4 #logo_h,
+#artiste3 #logo_h,
+#artiste2 #logo_h,
+#artiste #logo_h
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#artiste4 #logo_h h2,
+#artiste3 #logo_h h2,
+#artiste2 #logo_h h2,
+#artiste #logo_h h2
+{
+    font-size: 40px;
+}
+
+/*album*/
+/*page edm*/
+.album2 label
+{
+    background: url(images/album2djs.png) no-repeat left center;
+    cursor: pointer;
+    display: block;
+    padding: 100px 0px 100px 180px;
+    color: white;
+    font-size: 30px;
+    margin-left: 30%;
+}
+
+.album label
+{
+    background: url(images/albumdjs.png) no-repeat left center;
+    cursor: pointer;
+    display: block;
+    padding: 100px 0px 100px 180px;
+    color: white;
+    font-size: 30px;
+    margin-left: 30%;
+}
+
+/*page pop*/
+
+.album4 label
+{
+    background: url(images/albumes2.png) no-repeat left center;
+    cursor: pointer;
+    display: block;
+    padding: 100px 0px 100px 180px;
+    color: white;
+    font-size: 30px;
+    margin-left: 30%;
+}
+
+.album3 label
+{
+    background: url(images/albumes.png) no-repeat left center;
+    cursor: pointer;
+    display: block;
+    padding: 100px 0px 100px 180px;
+    color: white;
+    font-size: 30px;
+    margin-left: 30%;
+}
+
+/*page Rap*/
+
+.album6 label
+{
+    background: url(images/albumts2.png) no-repeat left center;
+    cursor: pointer;
+    display: block;
+    padding: 100px 0px 100px 180px;
+    color: white;
+    font-size: 30px;
+    margin-left: 30%;
+}
+
+.album5 label
+{
+    background: url(images/albumts.png) no-repeat left center;
+    cursor: pointer;
+    display: block;
+    padding: 100px 0px 100px 180px;
+    color: white;
+    font-size: 30px;
+    margin-left: 30%;
+}
+
+/*page rock*/
+
+.album8 label
+{
+    background: url(images/albumdolls2.png) no-repeat left center;
+    cursor: pointer;
+    display: block;
+    padding: 100px 0px 100px 180px;
+    color: white;
+    font-size: 30px;
+    margin-left: 30%;
+}
+
+.album7 label
+{
+    background: url(images/albumdolls.png) no-repeat left center;
+    cursor: pointer;
+    display: block;
+    padding: 100px 0px 100px 180px;
+    color: white;
+    font-size: 30px;
+    margin-left: 30%;
+}
+
+/*album*/
+
+.album8,
+.album7,
+.album6,
+.album5,
+.album4,
+.album3,
+.album2,
+.album
+{
+    color: white;
+
+}
+
+.album8 input#check1,
+.album7 input#check,
+.album6 input#check1,
+.album5 input#check,
+.album4 input#check1,
+.album3 input#check,
+.album2 input#check1,
+.album input#check
+{
+    display: none;
+}
+
+.music_album
+{
+    max-height: 0;
+    overflow: hidden;
+}
+
+input:checked ~ .music_album
+{
+    max-height: 100%;
+}
+
+/*page WIP*/
+
+#wippage
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 80%;
+    height: 80%;
+    z-index: -1;
+}
+
+.ring
+{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background: transparent;
+    border: 3px solid #3c3c3c;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 150px;
+    font-size: 13px;
+    color: crimson;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px crimson;
+    box-shadow: 0 0 20px rgba (0,0,0,.5);
+}
+
+.ring:before
+{
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top: 3px solid crimson;
+    border-right: 3px solid crimson;
+    border-radius: 50%;
+    animation: animateCircle 2s linear infinite;
+}
+
+.ring span
+{
+    display: block;
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 50%;
+    width: 50%;
+    height: 4px;
+    background: transparent;
+    transform-origin: left;
+    animation: animate 2s linear infinite;
+}
+
+.ring span::before
+{
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background:crimson;
+    top: -8px;
+    right: -8px;
+    box-shadow: 0 0 20px crimson;
+}
+
+@keyframes animateCircle
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes animate
+{
+    0%
+    {
+        transform: rotate(45deg);
+    }
+    100%
+    {
+        transform: rotate(405deg);
+    }
+}
+
+#textwip
+{
+    display: flex;
+    height: 300px;
+    width: 900px;
+    flex-direction: row;
+    position: relative;
+    top: 250px;
+    left: 250px;
+}
+
+#textwip p
+{
+    font-size: 40px;
+    color:#a7a7a7;
+}
